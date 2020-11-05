@@ -20,10 +20,14 @@ node() {
             checkout scm
         }
         stage("Test") {
-            sh("mvn clean test -U")
+            withMaven(maven: 'maven', jdk: 'jdk') {
+                sh("mvn clean test -U")
+            }
         }
         stage("Build") {
-            sh("mvn clean package")
+            withMaven(maven: 'maven', jdk: 'jdk') {
+                sh("mvn clean package")
+            }
         }
     } catch(error) {
         throw error

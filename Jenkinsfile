@@ -23,7 +23,7 @@ node() {
             sh("mvn clean test -U")
         }
         stage("Build") {
-            sh(" mvn clean package")
+            sh("mvn clean package")
         }
     } catch(error) {
         throw error

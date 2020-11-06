@@ -25,6 +25,12 @@ node() {
         stage("Build") {
                 sh("mvn clean package")
         }
+        stage('build & Push image')
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            def customImage = docker.build("esteban0477/springbootapp")
+            customImage.push()
+            }
+        }
     } catch(error) {
         throw error
 		sendFailureEmail()

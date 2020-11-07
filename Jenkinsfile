@@ -30,8 +30,8 @@ node() {
             def customImage = docker.build("esteban0477/springbootapp")
             customImage.push()
             }
-        }
-    } catch(error) {
+    }
+    catch(error) {
         throw error
 		sendFailureEmail()
     } finally {

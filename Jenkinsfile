@@ -20,15 +20,16 @@ node() {
         stage("Setup"){
             checkout scm
         }
-        
+        stage("Test") {
+                sh("mvn clean test -U")
+        }
+        stage("Build") {
+                sh("mvn clean package")
+        }
         stage("Test & build image") {
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                 def customImage = docker.build("esteban0477/springbootapp")
-                customImage.inside {
-                    sh("mvn clean test -U")
-                    sh("mvn clean package")
-                    customImage.push()
-                }
+                customImage.push()
             }
         }
     }

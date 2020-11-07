@@ -16,7 +16,7 @@ def sendFailureEmail() {
 
 node() {
     try{
-
+        
         stage("Setup"){
             checkout scm
         }

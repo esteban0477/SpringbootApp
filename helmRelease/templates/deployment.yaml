@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: springbootapp
+  name: springbootapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springbootapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: springbootapp
+    spec:
+      containers:
+      - image: esteban0477/springbootapp
+        name: springbootapp
+        resources: {}
+        ports: 
+        - containerPort: 8080
+status: {}

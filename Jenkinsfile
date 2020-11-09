@@ -38,8 +38,6 @@ node() {
             }
         }
     }
-
-}
     catch(error) {
         throw error
 		sendFailureEmail()

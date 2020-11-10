@@ -35,7 +35,7 @@ node() {
         stage("Deploying to Kubernetes") {
             withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://30DF4B954DDFF28A4D03EF3E7AE93BCC.yl4.us-east-2.eks.amazonaws.com']) {
                 sh 'kubectl get all'
-                sh 'helm install --set name=prod sringbootapp ./helmRelease'
+                sh 'helm upgrade --set name=prod sringbootapp ./helmRelease'
             }
         }
     }

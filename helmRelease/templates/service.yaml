@@ -4,13 +4,15 @@ metadata:
   creationTimestamp: null
   labels:
     app: springbootapp
+    app.kubernetes.io/managed-by: Helm
   name: springbootapp
 spec:
   ports:
-  - port: 8080
+  - port: 80
     protocol: TCP
     targetPort: 8080
   selector:
     app: springbootapp
+  type: LoadBalancer
 status:
   loadBalancer: {}
